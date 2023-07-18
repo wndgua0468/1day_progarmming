@@ -67,11 +67,20 @@ void TF_base_link_map_base_link(Point2D base_link_Point2D, Point2D* base_link_ma
 int main(void)
 {
     // 구조체 변수를 선언하고 초기화합니다.
-    Pose2D base_link_origin = { 0.0, 0.0, -90.0 }; 
+    Pose2D base_link_origin = { 0.0, 0.0, -90.0 };
     Point2D base_link_Point2D;
     Point2D base_link_map_Point2D;
 
-    // Base_link_Point2D와 Base_link_map_Point2D 값을 입력 
+    // 회전 변환 행렬과 역변환 행렬을 설정합니다.
+    double Rotation_matrix[2][2];
+    set_rotation_matrix(base_link_origin.theta, Rotation_matrix);
+
+    double Rotation_matrix_inverse[2][2];
+    set_rotation_matrix(-base_link_origin.theta, Rotation_matrix_inverse);
+
+    printf("Base_link의 angle값을 입력하세요: ");
+    scanf_s("%lf", &base_link_origin.theta);
+
     printf("Base_link_Point2D.x: ");
     scanf_s("%lf", &base_link_Point2D.x);
     printf("Base_link_Point2D.y: ");
@@ -82,13 +91,6 @@ int main(void)
     printf("Base_link_map_Point2D.y: ");
     scanf_s("%lf", &base_link_map_Point2D.y);
 
-    // 회전 변환 행렬과 역변환 행렬
-    double Rotation_matrix[2][2];
-    set_rotation_matrix(base_link_origin.theta, Rotation_matrix);
-
-    double Rotation_matrix_inverse[2][2];
-    set_rotation_matrix(-base_link_origin.theta, Rotation_matrix_inverse);
-
     printf("Rotation Matrix:\n");
     printf("%6.3lf  %6.3lf\n", Rotation_matrix[0][0], Rotation_matrix[0][1]);
     printf("%6.3lf  %6.3lf\n", Rotation_matrix[1][0], Rotation_matrix[1][1]);
@@ -97,7 +99,7 @@ int main(void)
     printf("%6.3lf  %6.3lf\n", Rotation_matrix_inverse[0][0], Rotation_matrix_inverse[0][1]);
     printf("%6.3lf  %6.3lf\n", Rotation_matrix_inverse[1][0], Rotation_matrix_inverse[1][1]);
 
-    // 결과를 출력
+    // 변환을 수행하고 결과를 출력합니다.
     Point2D transformed_point;
     TF_base_link_base_link_map(base_link_Point2D, &transformed_point, base_link_origin);
     printf("Transformed Point Matrix:\n");
