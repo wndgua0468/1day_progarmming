@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #define _CRT_SECURE_NO_WARNINGS
 #define _USE_MATH_DEFINES
@@ -35,29 +34,29 @@ void set_rotation_matrix(double m_angle_degree, double Rotation_matrix[2][2])
     Rotation_matrix[1][0] = sin(angle_radian); Rotation_matrix[1][1] = cos(angle_radian);
 }
 
-void TF_base_link_base_link_map(Point2D base_link_Point2D, Point2D* base_link_map_point2d, Pose2D base_link_origin)  //정변환 함수
+void TF_base_link_base_link_map(Point2D* base_link_Point2D, Point2D* base_link_map_point2d, Pose2D base_link_origin)
 {
     double Rotation_matrix_inverse[2][2];
     set_rotation_matrix(-base_link_origin.theta, Rotation_matrix_inverse);
 
-    double transformed_x = (Rotation_matrix_inverse[0][0] * (base_link_Point2D.x - base_link_origin.x)) +
-        (Rotation_matrix_inverse[0][1] * (base_link_Point2D.y - base_link_origin.y));
-    double transformed_y = (Rotation_matrix_inverse[1][0] * (base_link_Point2D.x - base_link_origin.x)) +
-        (Rotation_matrix_inverse[1][1] * (base_link_Point2D.y - base_link_origin.y));
+    double transformed_x = (Rotation_matrix_inverse[0][0] * (base_link_Point2D->x - base_link_origin.x)) +
+        (Rotation_matrix_inverse[0][1] * (base_link_Point2D->y - base_link_origin.y));
+    double transformed_y = (Rotation_matrix_inverse[1][0] * (base_link_Point2D->x - base_link_origin.x)) +
+        (Rotation_matrix_inverse[1][1] * (base_link_Point2D->y - base_link_origin.y));
 
     base_link_map_point2d->x = transformed_x;
     base_link_map_point2d->y = transformed_y;
 }
 
-void TF_base_link_map_base_link(Point2D base_link_Point2D, Point2D* base_link_map_point2d, Pose2D base_link_origin)  //역변환 함수
+void TF_base_link_map_base_link(Point2D* base_link_Point2D, Point2D* base_link_map_point2d, Pose2D base_link_origin)
 {
     double Rotation_matrix[2][2];
     set_rotation_matrix(base_link_origin.theta, Rotation_matrix);
 
-    double transformed_x_inverse = (Rotation_matrix[0][0] * base_link_Point2D.x) +
-        (Rotation_matrix[0][1] * base_link_Point2D.y) + base_link_origin.x;
-    double transformed_y_inverse = (Rotation_matrix[1][0] * base_link_Point2D.x) +
-        (Rotation_matrix[1][1] * base_link_Point2D.y) + base_link_origin.y;
+    double transformed_x_inverse = (Rotation_matrix[0][0] * base_link_Point2D->x) +
+        (Rotation_matrix[0][1] * base_link_Point2D->y) + base_link_origin.x;
+    double transformed_y_inverse = (Rotation_matrix[1][0] * base_link_Point2D->x) +
+        (Rotation_matrix[1][1] * base_link_Point2D->y) + base_link_origin.y;
 
     base_link_map_point2d->x = transformed_x_inverse;
     base_link_map_point2d->y = transformed_y_inverse;
@@ -87,15 +86,17 @@ int main(void)
 
     // 변환을 수행하고 결과를 출력
     Point2D transformed_point;
-    TF_base_link_base_link_map(base_link_Point2D, &transformed_point, base_link_origin);
+    TF_base_link_base_link_map(&base_link_Point2D, &transformed_point, base_link_origin);
     printf("Transformed Point Matrix:\n");
     printf("Transformed Point: %6.3lf  %6.3lf\n", transformed_point.x, transformed_point.y);
 
     Point2D transformed_point_inverse;
-    TF_base_link_map_base_link(base_link_map_Point2D, &transformed_point_inverse, base_link_origin);
+    TF_base_link_map_base_link(&base_link_map_Point2D, &transformed_point_inverse, base_link_origin);
     printf("Transformed Point Matrix_inverse:\n");
     printf("Transformed Point_Inverse: %6.3lf  %6.3lf\n", transformed_point_inverse.x, transformed_point_inverse.y);
 
     return 0;
 }
+
+
 
