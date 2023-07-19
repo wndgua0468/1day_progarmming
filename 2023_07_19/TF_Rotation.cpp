@@ -2,8 +2,8 @@
 #define _USE_MATH_DEFINES
 #include "math.h"
 
-#define RAD2DEG(x)   x*180/M_PI  //라이안에더 디글로
-#define DEG2RAD(x)   x*M_PI/180  //디글에서 라디안으로
+#define RAD2DEG(x)   x*180/M_PI  //라이안에더 디글
+#define DEG2RAD(x)   x*M_PI/180  //디글에서 라디안으
 
 typedef struct 
 {
@@ -90,7 +90,7 @@ int main(void)
 {
 	base_link_origin.x = 2.0;
 	base_link_origin.y = 1.0;
-	base_link_origin.theta = 90;	
+	base_link_origin.theta = -90;	
 
 	base_link_Point2D.x = 1;
 	base_link_Point2D.y = 1;
