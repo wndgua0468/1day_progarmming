@@ -88,9 +88,6 @@ void TF_map_base_link_map(Point2D* base_link_point2d, Point2D* base_link_map_poi
 
 int main(void)
 {
-	//angle_degree = 90;
-	//angle_radian = DEG2RAD(angle_degree);
-
 	base_link_origin.x = 2.0;
 	base_link_origin.y = 1.0;
 	base_link_origin.theta = 90;	
