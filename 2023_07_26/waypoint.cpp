@@ -60,21 +60,21 @@ double Rotation_matrix_axis[2][2];                    //좌표축을 회전하�
 
 int initialize_waypoint(void)  // waypoint초기화 함수
 {
-    waypoint_utm[0] =  { 403165.834539,  4129142.66722 };
-    waypoint_utm[1] =  { 403163.074411,  4129144.66310 };
-    waypoint_utm[2] =  { 403168.006126,  4129155.70202 };
-    waypoint_utm[3] =  { 403171.552590,  4129159.62227 };
-    waypoint_utm[4] =  { 403175.499272,  4129163.65995 };
-    waypoint_utm[5] =  { 403188.494255,  4129175.23815 };
-    waypoint_utm[6] =  { 403192.579036,  4129177.42123 };
-    waypoint_utm[7] =  { 403195.456870,  4129178.70838 };
-    waypoint_utm[8] =  { 403196.654117,  4129182.60031 };
-    waypoint_utm[9] =  { 403188.253848,  4129179.74587 };
-    waypoint_utm[10] = { 403183.344647,  4129175.25328 };
-    waypoint_utm[11] = { 403178.839622,  4129171.98767 };
-    waypoint_utm[12] = { 403174.786097,  4129167.14121 };
-    waypoint_utm[13] = { 403172.102604,  4129165.03072 };
-    waypoint_utm[14] = { 403167.683418,  4129166.12481 };
+    waypoint_utm[0] =  { 403165.834539, 4129142.66722 };
+    waypoint_utm[1] =  { 403163.074411, 4129144.66310 };
+    waypoint_utm[2] =  { 403168.006126, 4129155.70202 };
+    waypoint_utm[3] =  { 403171.552590, 4129159.62227 };
+    waypoint_utm[4] =  { 403175.499272, 4129163.65995 };
+    waypoint_utm[5] =  { 403188.494255, 4129175.23815 };
+    waypoint_utm[6] =  { 403192.579036, 4129177.42123 };
+    waypoint_utm[7] =  { 403195.456870, 4129178.70838 };
+    waypoint_utm[8] =  { 403196.654117, 4129182.60031 };
+    waypoint_utm[9] =  { 403188.253848, 4129179.74587 };
+    waypoint_utm[10] = { 403183.344647, 4129175.25328 };
+    waypoint_utm[11] = { 403178.839622, 4129171.98767 };
+    waypoint_utm[12] = { 403174.786097, 4129167.14121 };
+    waypoint_utm[13] = { 403172.102604, 4129165.03072 };
+    waypoint_utm[14] = { 403167.683418, 4129166.12481 };
 
     waypoint_utm_datum = waypoint_utm[0];
 
@@ -97,7 +97,7 @@ int initialize_waypoint(void)  // waypoint초기화 함수
     return 1;
 }
 
-void set_rotation_matrix_axis(double m_angle_degree)
+void set_rotation_matrix_axis(double m_angle_degree)  //축의 회전 행렬
 {
     angle_radian = DEG2RAD(m_angle_degree);
 
@@ -105,7 +105,7 @@ void set_rotation_matrix_axis(double m_angle_degree)
     Rotation_matrix_axis[1][0] = -sin(angle_radian);   Rotation_matrix_axis[1][1] = cos(angle_radian);
 }
 
-void set_rotation_matrix_point(double m_angle_degree)
+void set_rotation_matrix_point(double m_angle_degree)  //점의 회전 행렬
 {
     angle_radian = DEG2RAD(m_angle_degree);
 
@@ -139,7 +139,7 @@ void TF_base_link_map(Point2D odom_point2d, Point2D* map_point2d, Pose2D odom_or
     // 병행 변환  base_link_map -> map
 }
 
-void calculate_waypoint_angle_utm(void)
+void calculate_waypoint_angle_utm(void)   // UTM 좌표 기존 Waypoint의 각도를 계산
 {
     for (int i = 1; i < 15; i++)
     {
@@ -154,7 +154,7 @@ void calculate_waypoint_angle_utm(void)
     printf("\n");
 }
 
-void calculate_waypoint_angle_map(void)
+void calculate_waypoint_angle_map(void)   // Map 좌표 기존 Waypoint의 각도를 계산
 {
     for (int i = 1; i < 15; i++)
     {
@@ -169,7 +169,7 @@ void calculate_waypoint_angle_map(void)
     printf("\n");
 }
 
-void calculate_waypoint_distance(void)
+void calculate_waypoint_distance(void)   // Waypoint들 사이의 거리를 계산
 {
     for (int i = 1; i < 15; i++)
     {
@@ -185,7 +185,7 @@ void calculate_waypoint_distance(void)
     printf("\n");
 }
 
-void calculate_waypoint_equation_utm(void)
+void calculate_waypoint_equation_utm(void)   // UTM 좌표 기존 Waypoint의 라인 방정식을 계산
 {
     for (int i = 1; i < 15; i++)
     {
@@ -204,7 +204,7 @@ void calculate_waypoint_equation_utm(void)
     printf("\n");
 }
 
-void calculate_waypoint_equation_map(void)
+void calculate_waypoint_equation_map(void)   // Map 좌표 기존 Waypoint의 라인 방정식을 계산
 {
     for (int i = 1; i < 15; i++)
     {
@@ -222,7 +222,7 @@ void calculate_waypoint_equation_map(void)
     printf("\n");
 }
 
-double calculate_distance_point_line_equation_utm(Point2D in_point2d, int waypoint_id)
+double calculate_distance_point_line_equation_utm(Point2D in_point2d, int waypoint_id)   // 점과 라인 방정식 사이의 거리를 계산하는 함수 (UTM 좌표 기준)
 {
     double distance = 0;  // y = ax + b  ->  ax + b -y
 
@@ -234,7 +234,7 @@ double calculate_distance_point_line_equation_utm(Point2D in_point2d, int waypoi
 }
 
 
-double calculate_distance_point_line_equation_map(Point2D in_point2d, int waypoint_id)
+double calculate_distance_point_line_equation_map(Point2D in_point2d, int waypoint_id)   // 점과 라인 방정식 사이의 거리를 계산하는 함수 (Map 좌표 기준)
 {
     double distance = 0;  // y = ax + b  ->  ax + b -y
 
