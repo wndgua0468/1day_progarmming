@@ -247,6 +247,23 @@ double calculate_distance_point_line_equation_map(Point2D in_point2d, int waypoi
     return distance;
 }
 
+double calculate_waypoint_arrive_distance(Pose2D base_link_pose, int waypoint_id)
+{
+    double distance = 0;
+    double dx, dy, delta_angle;
+
+    dx = waypoint_map_relative[waypoint_id].x - base_link_pose.x; //목표점 - 시작점 X성분
+    dy = waypoint_map_relative[waypoint_id].y - base_link_pose.y; //목표점 - 시작점 Y성분
+    delta_angle = RAD2DEG(atan2(dx, dy)) - waypoint_angle_map[waypoint_id];
+    printf("delta_angle = %6.3lf \n", delta_angle);
+
+    distance = sqrt(pow(dx, 2.0) + pow(dy, 2.0)) * cos(RAD2DEG(delta_angle));
+    printf("cos distance = %6.3lf \n", distance);
+
+    return distance;
+}
+
+
 int main(void)
 {
     //angle_degree = 90;
@@ -277,8 +294,8 @@ int main(void)
     test.x = 1.0;
     test.y = 1.0;
 
-    base_link_origin.x = 1.0;
-    base_link_origin.y = 1.0;
+    base_link_origin.x = 0.0;
+    base_link_origin.y = 0.0;
     base_link_origin.yaw = 45;
 
     heading_angle_error = waypoint_angle_map[current_waypoint_id] - base_link_origin.yaw;  
@@ -287,13 +304,15 @@ int main(void)
     cross_track_error_map = calculate_distance_point_line_equation_map(test, 1);
     cross_track_error_angle = cross_track_error_map * ctr_factor;
 
-    target_steering_angle = heading_angle_error + cross_track_error_angle;
+    target_steering_angle = heading_angle_error + cross_track_error_angle;   
 
 
     printf("distance(utm) = %6.3lf\n", cross_track_error_utm);
     printf("distance(map) = %6.3lf\n", cross_track_error_map);
     printf("heading_angle_error , cross_track_error_angle : %6.3lf , %6.3lf \n", heading_angle_error, cross_track_error_angle);
     printf("steering_angle = %6.3lf \n", target_steering_angle);
+
+    calculate_waypoint_arrive_distance(base_link_origin, 1); //waypoint 0번에서 거리
 
     //TF_base_link_base_link_map1(base_link_Point2D, &base_link_map_Point2D, base_link_origin);
 
