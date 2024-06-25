@@ -1,0 +1,6 @@
+﻿cl : 명령줄  warning D9035: 'Gm' 옵션은 더 이상 사용되지 않으므로 이후 릴리스에서 제거될 예정입니다.
+  CAN_Console.cpp
+C:\Qt\CAN_DBC-main\CAN_FIFO_Module\CAN_Console.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Qt\CAN_DBC-main\CAN_FIFO_Module\CAN_Console.cpp(33,9): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Qt\CAN_DBC-main\CAN_FIFO_Module\CAN_Console.cpp(70,30): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  CAN_Console.vcxproj -> C:\Qt\CAN_DBC-main\CAN_FIFO_Module\Debug\CAN_Console.exe
