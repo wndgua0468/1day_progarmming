@@ -14,7 +14,7 @@
 - [DI-DO CAN 필드버스 릴레이 모듈](https://ko.aliexpress.com/item/1005005510634857.html?pdp_npi=3%40dis%21USD%21%21US%20%2414.96%21%21%21%21%21%402101583817162883464498485e9037%2112000033359625044%21im%21%21&gatewayAdapt=glo2kor)
 
 ## 노션
-- [(https://www.notion.so/CAN-DBC-Edit-8cbe96a3b7d149659acdaea0ab866c4c).
+(https://www.notion.so/CAN-DBC-Edit-8cbe96a3b7d149659acdaea0ab866c4c).
 
 ## 업데이트
 - 04.26 : 1, 2, 3번 기능 구현
