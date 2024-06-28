@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "D:/chrome down/CAN_Editor-main.3/CAN_Editor-main/DBC_Editor/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/CMakeFiles/DBC_Editor.dir/embed.manifest"
