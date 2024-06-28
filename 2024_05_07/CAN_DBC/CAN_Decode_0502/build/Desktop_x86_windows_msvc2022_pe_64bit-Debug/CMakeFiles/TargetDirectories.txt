@@ -1,8 +1,0 @@
-C:/Qt/CAN_DBC-main/CAN_Decode_0502/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/CMakeFiles/DBC_Edit.dir
-C:/Qt/CAN_DBC-main/CAN_Decode_0502/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/CMakeFiles/edit_cache.dir
-C:/Qt/CAN_DBC-main/CAN_Decode_0502/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/CMakeFiles/rebuild_cache.dir
-C:/Qt/CAN_DBC-main/CAN_Decode_0502/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/CMakeFiles/list_install_components.dir
-C:/Qt/CAN_DBC-main/CAN_Decode_0502/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/CMakeFiles/install.dir
-C:/Qt/CAN_DBC-main/CAN_Decode_0502/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/CMakeFiles/install/local.dir
-C:/Qt/CAN_DBC-main/CAN_Decode_0502/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/CMakeFiles/DBC_Edit_autogen_timestamp_deps.dir
-C:/Qt/CAN_DBC-main/CAN_Decode_0502/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/CMakeFiles/DBC_Edit_autogen.dir
